@@ -17,7 +17,7 @@ def main():
 
     for file_name in file_list:
         with FortranFile(file_name, 'r') as f:
-            df = pd.concat([df, pd.DataFrame(f.read_reals(dtype='float32'), columns=[file_name])], ignore_index=True)
+            df[file_name] = f.read_reals(dtype='float32')
 
     df.to_csv("test.csv", index=False)
 
