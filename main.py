@@ -10,7 +10,7 @@ def main():
 
     data = np.vstack([i, j, k])
 
-    df = pd.DataFrame(data, columns=['i', 'j', 'k'])
+    df = pd.DataFrame(data.T, columns=['i', 'j', 'k'])
     
     file_pattern = "data/4096/keta2/*.float"
     file_list = glob.glob(file_pattern)
