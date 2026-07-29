@@ -4,9 +4,9 @@ import pandas as pd
 from scipy.io import FortranFile
 
 def main():
-    i = np.tile(np.arange(1, 65), 64 * 64)
+    i = np.repeat(np.arange(1, 65), 64 * 64)
     j = np.repeat(np.tile(np.arange(1, 65), 64), 64)
-    k = np.repeat(np.arange(1, 65), 64 * 64)
+    k = np.tile(np.arange(1, 65), 64 * 64)
 
     data = np.vstack([i, j, k])
 
@@ -20,10 +20,7 @@ def main():
             col_name = file_name.removeprefix("data/4096/keta2/")
             col_name = col_name.removesuffix(".float")
             col_name = col_name.replace("_64", "")
-            g = f.read_reals(dtype='float32')
-            g = np.reshape(g, (64, 64, 64), order='F')
-            g = g.transpose(2, 1, 0)
-            df[col_name] = g.reshape(-1,)
+            df[col_name] = f.read_reals(dtype='float32')
 
     df.to_csv("test.csv", index=False)
 
