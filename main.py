@@ -20,7 +20,7 @@ def main():
             col_name = file_name.removeprefix("data/4096/keta2/")
             col_name = col_name.removesuffix(".float")
             col_name = col_name.replace("_64", "")
-            df[col_name] = f.read_reals(dtype='float32')
+            df[col_name] = np.roll(f.read_reals(dtype='float32'), -64)
 
     df.to_csv("test.csv", index=False)
 
