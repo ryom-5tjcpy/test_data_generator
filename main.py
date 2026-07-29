@@ -22,7 +22,7 @@ def main():
             col_name = col_name.replace("_64", "")
             g = f.read_reals(dtype='float32')
             g = np.reshape(g, (64, 64, 64), order='F')
-            g = g.transpose(1, 0, 2)
+            g = g.transpose(2, 1, 0)
             df[col_name] = g.reshape(-1,)
 
     df.to_csv("test.csv", index=False)
