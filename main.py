@@ -18,7 +18,7 @@ def main():
     for file_name in file_list:
         with FortranFile(file_name, 'r') as f:
             col_name = file_name.removeprefix("data/4096/keta2/")
-            col_name = col_name.removesuffix("_64.float")
+            col_name = col_name.removesuffix(".float")
             df[col_name] = f.read_reals(dtype='float32')
 
     df.to_csv("test.csv", index=False)
